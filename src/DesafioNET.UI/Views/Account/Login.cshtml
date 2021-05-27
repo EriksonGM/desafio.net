@@ -1,0 +1,48 @@
+﻿@model DesafioNET.Services.Models.LoginDTO
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<style>
+    h1 {
+        text-align: center;
+    }
+
+    .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    }
+
+    form {
+        display: grid;
+        grid-template-rows: 50px 1fr 55px;
+        height: 100%
+    }
+</style>
+
+<form asp-action="Login" asp-controller="Account" method="post">
+    <h1>Login</h1>
+    <div style="vertical-align: center">
+        @Html.AntiForgeryToken()
+
+        <div class="group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="control" type="email" required />
+        </div>
+        <div class="group">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" class="control" type="password" required />
+        </div>
+        <div asp-validation-summary="All"></div>
+    </div>
+
+    <div class="group split">
+        <a asp-action="Register" asp-controller="Account" class="btn btn-alt" style="text-decoration: none">Criar conta</a>
+        <button class="btn btn-blue">Login</button>
+    </div>
+</form>
+
+
+

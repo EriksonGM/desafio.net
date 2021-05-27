@@ -1,0 +1,56 @@
+﻿@model DesafioNET.Services.Models.RegisterDTO
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+
+<style>
+    h1 {
+        text-align: center;
+    }
+
+    .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    }
+
+    form {
+        display: grid;
+        grid-template-rows: 50px 1fr 55px;
+        height: 100%
+    }
+    .container {
+        grid-template-rows: 1fr 530px 1fr;
+    }
+</style>
+
+<form asp-action="Register" asp-controller="Account" method="post">
+    <h1>Criar conta</h1>
+    <div style="vertical-align: center">
+        @Html.AntiForgeryToken()
+        <div class="group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="control" maxlength="100" required />
+        </div>
+        <div class="group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="control" type="email" maxlength="50" required />
+        </div>
+        <div class="group">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" class="control" type="password" maxlength="50" required />
+        </div>
+        <div class="group">
+            <label asp-for="Confirmation"></label>
+            <input asp-for="Confirmation" class="control" type="password" maxlength="50" required />
+        </div>
+        <div asp-validation-summary="All"></div>
+    </div>
+
+    <div class="group split">
+        <a asp-action="Login" asp-controller="Account" class="btn btn-alt">Cancelar</a>
+        <button class="btn btn-blue">Criar conta</button>
+    </div>
+</form>

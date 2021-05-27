@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DesafioNET.UI</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            box-shadow: 2px 2px 5px;
+            background: #e6e6fa
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 600px 1fr;
+            grid-template-rows: 1fr 400px 1fr;
+            height: 100vh;
+        }
+
+        .box {
+            grid-column-start: 2;
+            grid-row-start: 2;
+            border: solid black 1px;
+            border-radius: 15px;
+            background: white;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+
+</html>
