@@ -19,18 +19,23 @@ namespace DesafioNET.Data.Entites
 
         public DateTime EventDate { get; set; }
 
+
         public decimal TransactionValue { get; set; }
 
         [MaxLength(10)]
+        [Required]
         public string CPF { get; set; }
 
         [MaxLength(11)]
+        [Required]
         public string Card { get; set; }
 
         [MaxLength(13)]
+        [Required]
         public string PlaceOwner { get; set; }
 
         [MaxLength(18)]
+        [Required]
         public string PlaceName { get; set; }
     }
 }

@@ -12,6 +12,10 @@ namespace DesafioNET.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Transaction>()
+                .Property(x => x.TransactionValue)
+                .HasColumnType("Money");
+
             modelBuilder.Entity<TransactionType>().HasData(
                 new TransactionType{TransactionTypeId = 1, TypeName = "Débito", IsPositive = true},
                 new TransactionType{TransactionTypeId = 2, TypeName = "Boleto", IsPositive = false },
