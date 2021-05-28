@@ -19,15 +19,24 @@ namespace DesafioNET.UI.Controllers
 
         public IActionResult Index()
         {
+
+
             return View();
         }
 
-        public IActionResult Privacy()
+
+        public IActionResult Account()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [HttpPost]
+        public IActionResult ImportFile()
+        {
+
+
+            return RedirectToAction("Account");
+        }
 
         public IActionResult Error()
         {

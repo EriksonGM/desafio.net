@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewData["Title"] = "Conta";
+}
+
+<form asp-action="ImportFile" method="post" enctype="multipart/form-data">
+    <input id="file" name="file" type="file" style="width: 250px; margin-right: 20px" required=""/>
+    <button class="btn btn-blue">Importar Ficheiro</button>
+</form>

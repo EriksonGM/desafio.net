@@ -1,44 +1,74 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - DesafioNET.UI</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        html, body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            display: grid;
+            grid-template-columns: 1fr 1200px 1fr;
+            grid-template-rows: 60px 1fr 60px;
+            height: 100vh;
+        }
+
+        header {
+            grid-column-start: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-content: center;
+            font-size: 24px;
+            border-bottom: solid 1px #a9a9a9;
+        }
+
+        .container {
+            grid-column-start: 2;
+            padding-top: 25px
+        }
+
+        footer {
+            grid-column-start: 2;
+        }
+
+        .navegator {
+            display: flex;
+            justify-content: space-around;
+            
+        }
+
+        .user {
+            display: flex;
+            justify-content: flex-end
+        }
+    </style>
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DesafioNET.UI</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                </ul>
-            </div>
+    <header>
+        <nav class="navegator">
+            <a asp-action="Index" asp-controller="Home" style="font-weight: bolder">Inicio</a>
+            <a asp-controller="Home" asp-action="Account">Conta</a>
+            <a>Inicio</a>
+        </nav>
+        <div class="user">
+            @User.Claims.First(x => x.Type == ClaimTypes.Name).Value
+            <a asp-action="LogOut" asp-controller="Auth" style="margin-left: 15px; color: blue"> Sair</a>
         </div>
-    </nav>
-</header>
+    </header>
 
     <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        @RenderBody()
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - DesafioNET.UI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    <footer class="">
     </footer>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

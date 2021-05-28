@@ -12,11 +12,11 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DesafioNET.UI.Controllers
 {
-    public class AccountController : BaseController
+    public class AuthController : BaseController
     {
         private readonly IAuthService _auth;
 
-        public AccountController(IAuthService auth)
+        public AuthController(IAuthService auth)
         {
             _auth = auth;
         }

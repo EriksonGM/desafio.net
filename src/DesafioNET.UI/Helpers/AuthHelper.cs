@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DesafioNET.Services;
 
 namespace DesafioNET.UI.Helpers
 {
@@ -11,5 +12,10 @@ namespace DesafioNET.UI.Helpers
         {
             return Guid.Parse(identity.Name);
         }
+
+        //public static string GetName(this System.Security.Principal.IIdentity identity)
+        //{
+        //    return identity
+        //}
     }
 }

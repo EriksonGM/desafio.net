@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DesafioNET.Data.Entites
@@ -19,5 +20,7 @@ namespace DesafioNET.Data.Entites
         [Required]
         [StringLength(128)]
         public string Password { get; set; }
+
+        public ICollection<Transaction> Transactions { get; set; }
     }
 }
