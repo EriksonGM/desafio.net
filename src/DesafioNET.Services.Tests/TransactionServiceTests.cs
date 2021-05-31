@@ -24,7 +24,9 @@ namespace DesafioNET.Services.Tests
 
         [TestMethod]
         [DataRow("2201903010000010700845152540738723****9987123333MARCOS PEREIRAMERCADO DA AVENIDA")]
-        public void ParseTransactionTest(string row)
+        [DataRow("1201903010000015200096206760171234****7890233000JOÃO MACEDO   BAR DO JOÃO")]
+        [DataRow("3201903010000060200232702980566777****1313172712JOSÉ COSTA    MERCEARIA 3 IRMÃOS")]
+        public void ParseTransaction_Test(string row)
         {
             var res = _transaction.ParseTransaction(row);
 

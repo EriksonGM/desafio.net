@@ -20,5 +20,10 @@ namespace DesafioNET.Services.Helpers
 
             return builder.ToString();
         }
+
+        public static string FormatedValue(this decimal val)
+        {
+            return "";
+        }
     }
 }

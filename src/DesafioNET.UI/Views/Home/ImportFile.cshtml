@@ -1,19 +1,25 @@
-﻿@using System.Security.Claims
+﻿@model List<DesafioNET.Services.Models.ImportedTransactionResultDTO>
 @{
-    ViewData["Title"] = "Inicio";
+    ViewData["Title"] = "Ficheiro importado";
 }
 
-<h1 class="" style="text-align: center; margin-top: 50px">
-    @User.Claims.First(x => x.Type == ClaimTypes.Name).Value, seja bem-vindo.
+<h1>
+    @Model.Count(x => x.Success) de @Model.Count registos importados com sucesso.
 </h1>
 
-<div class="card yes">
-    <span class="row">3201903010000014200096206760174753****3153153453JOÃO MACEDO   BAR DO JOÃO       </span>
-    <span class="result"><strong>Resultado:</strong> Registo importado com sucesso</span>
-    <span class="data"><strong>Data:</strong> sexta-feira, 1 de março de 2019 15:34:53</span>
-    <span class="value"><strong>Valor:</strong> 142,00 Kz</span>
-    <span class="place"><strong>Lugar:</strong> BAR DO JOÃO       </span>
-</div>
+@foreach (var r in Model)
+{
+    <div class="card @( r.Success ? "yes" : "not")">
+        <span class="row">@r.Row</span>
+        <span class="result">@r.Result</span>
+        @if (r.Success)
+        {
+            <span class="data"><strong>Data:</strong> @($"{r.Transaction.EventDate:F}")</span>
+            <span class="value"><strong>Valor:</strong> @($"{r.Transaction.TransactionValue:C}")</span>
+            <span class="place"><strong>Lugar:</strong> @($"{r.Transaction.PlaceName}")</span>
+        }
+    </div>
+}
 
 @section Style {
     <style>
@@ -23,7 +29,7 @@
             width: 100%;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-            /*grid-template-rows: 1fr 1fr;*/
+            grid-template-rows: 1fr 1fr;
             border-radius: 15px;
             padding: 5px
         }
@@ -67,3 +73,7 @@
         }
     </style>
 }
+
+
+
+

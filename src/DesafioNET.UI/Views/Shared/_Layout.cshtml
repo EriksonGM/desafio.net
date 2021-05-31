@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - DesafioNET.UI</title>
     <link rel="stylesheet" href="~/css/site.css" />
+    @await RenderSectionAsync("Style", required: false)
     <style>
         html, body {
             margin: 0px;
@@ -40,7 +41,6 @@
         .navegator {
             display: flex;
             justify-content: space-around;
-            
         }
 
         .user {
@@ -54,7 +54,7 @@
         <nav class="navegator">
             <a asp-action="Index" asp-controller="Home" style="font-weight: bolder">Inicio</a>
             <a asp-controller="Home" asp-action="Account">Conta</a>
-            <a>Inicio</a>
+            <a asp-controller="Home" asp-action="History">Historico</a>
         </nav>
         <div class="user">
             @User.Claims.First(x => x.Type == ClaimTypes.Name).Value
